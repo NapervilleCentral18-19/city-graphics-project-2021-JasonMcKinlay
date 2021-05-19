@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=g
+comment0.target=void\ paintComponent(java.awt.Graphics)
+comment0.text=\r\n\ This\ method\ is\ invoked\ by\ the\ Java\ Run-Time\ whenever\ the\ component\ needs\ to\ be\ redrawn.\r\n\ It\ does\ not\ need\ to\ be\ invoked\ explicitly.\r\n\ \r\n\ @param\ g\ a\ reference\ to\ the\ Graphics\ object\ used\ for\ all\ drawing\ operations\r\n\r\n
+comment1.params=
+comment1.target=void\ nextFrame()
+comment1.text=\r\n\ Animate\ the\ cityscape\ by\ updating\ the\ objects\ such\ that\ they\ appear\ to\ be\ animated\ when\r\n\ \ \ \ \ \ they\ are\ next\ drawn.\r\n\r\n
+numComments=2
