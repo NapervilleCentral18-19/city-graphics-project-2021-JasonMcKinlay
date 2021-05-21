@@ -59,12 +59,13 @@ public class StickFigure extends JComponent implements Runnable
 
 
     }
-
+    
     /**
      * Animate the cityscape by updating the objects such that they appear to be animated when
      *      they are next drawn.
      *
      */
+    /*
     public void nextFrame()
     {
         // update the objects in the cityscape so they are animated
@@ -77,7 +78,7 @@ public class StickFigure extends JComponent implements Runnable
         //  do not explicitly invoke the paintComponent method
         repaint();
     }
-
+    */
        //-----------------------------------------------------------------
        //  Draws this figure relative to baseX, baseY, and height.
        //-----------------------------------------------------------------
@@ -101,17 +102,20 @@ public class StickFigure extends JComponent implements Runnable
 
        }
 
-       
+       /**
+        * ANIMATE THE OBJECT BY UPDATING THE ATTRIBUTES SUCH THAT
+        * IT LOOKS ANIMATED WHEN NEXT DRAWN
+        */
        public void run()
         {
         while(true){
-            int newHeight = 100 + generator.nextInt(45);
-            height = newHeight;
+            height = 100 + generator.nextInt(45);
+            //height = newHeight;
             try{
                 Thread.sleep(17);
             }catch (Exception e){}
-
-            System.out.print(height);
+            //test code
+            //System.out.print(height);
         }
 
         }

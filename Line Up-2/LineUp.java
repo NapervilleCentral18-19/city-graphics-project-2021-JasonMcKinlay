@@ -62,7 +62,7 @@ public class LineUp extends JComponent //implements Runnable
       figure2.draw (page);
       figure3.draw (page);
       figure4.draw (page);
-      //ground.draw(page);// on top of figures
+      ground.draw(page);// on top of figures
 
       
 

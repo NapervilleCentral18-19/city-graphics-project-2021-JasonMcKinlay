@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Floor
+comment1.params=
+comment1.target=Floor()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Floor\r\n
+comment2.params=g
+comment2.target=void\ paintComponent(java.awt.Graphics)
+comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
+comment3.params=page
+comment3.target=void\ draw(java.awt.Graphics2D)
+comment4.params=running
+comment4.target=void\ setX(int)
+comment4.text=\r\n\ Animate\ the\ object\ by\ updating\ the\ object's\ attributes\r\n\ such\ that\ they\ appear\ to\ be\ animated\ when\ they\ are\ next\ drawn\r\n
+numComments=5

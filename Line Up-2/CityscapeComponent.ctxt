@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.target=Cityscape
+comment0.target=CityscapeComponent
 comment0.text=\r\n\ Class\ that\ creates\ instances\ of\ the\ classes\ that\ comprise\ the\ cityscape\ and\ delegates\ drawing\ the\r\n\ \ cityscape\ to\ these\ object.\r\n\ \r\n\ @author\ gcschmit\r\n\ @version\ 18\ July\ 2014\r\n
 comment1.params=g
 comment1.target=void\ paintComponent(java.awt.Graphics)

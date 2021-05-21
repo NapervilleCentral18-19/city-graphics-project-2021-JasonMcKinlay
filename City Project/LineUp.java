@@ -20,10 +20,15 @@ public class LineUp extends JComponent //implements Runnable
    Random generator = new Random();
    //Graphics page;
 
-   //private StickFigure2 figure1 = new StickFigure2(100,150,Color.red,120);
-   private StickFigure figure1,figure2, figure3, figure4;
-   private Floor ground;
-   private int running = 0;
+   private Rectangle ground = new Rectangle(0,500,1000,800, Color.green);
+   private Rectangle sky = new Rectangle(0,0,1920,1080, Color.cyan);
+   private Rectangle building1 = new Rectangle(0,200,100,400, Color.black);
+   private Rectangle building2 = new Rectangle(100,150,100,400, Color.darkGray);
+   
+   private Windows window1 = new Windows();
+   //private StickFigure figure1,figure2, figure3, figure4;
+   //private Floor ground;
+   //private int running = 0;
 
    //-----------------------------------------------------------------
    //  Creates several stick figures with varying characteristics.
@@ -38,13 +43,13 @@ public class LineUp extends JComponent //implements Runnable
       h4 = HEIGHT_MIN + generator.nextInt(VARIANCE);
 
 
-      figure1 = new StickFigure (100, 150, Color.red, h1);
+      //figure1 = new StickFigure (100, 150, Color.red, h1);
       //x, y, color, height
-      figure2 = new StickFigure(150, 150, Color.green, h2);
-      figure3 = new StickFigure(200, 150, Color.cyan, h3);
-      figure4 = new StickFigure(250, 150, Color.yellow, h4);
+      //figure2 = new StickFigure(150, 150, Color.green, h2);
+      //figure3 = new StickFigure(200, 150, Color.cyan, h3);
+      //figure4 = new StickFigure(250, 150, Color.yellow, h4);
 
-      ground = new Floor();
+      //ground = new Floor();
 
       //Thread t1 = new Thread(ground);
       //t1.start();
@@ -64,13 +69,17 @@ public class LineUp extends JComponent //implements Runnable
    
    public void startThreads()
    {
-       Thread sFigThread1 = new Thread(figure1);
-       Thread sFigThread3 = new Thread(figure3);
        Thread groundThread = new Thread(ground);
-       
-       sFigThread1.start();
-       sFigThread3.start();
+       Thread bThread1 = new Thread(building1);
+       Thread bThread2 = new Thread(building2);
+       Thread skyThread = new Thread(sky);
+       Thread windowThread1 = new Thread(window1);
+
        groundThread.start();
+       bThread1.start();
+       bThread2.start();
+       skyThread.start();
+       windowThread1.start();
    }
 
    //-----------------------------------------------------------------
@@ -80,11 +89,12 @@ public class LineUp extends JComponent //implements Runnable
     {
         Graphics2D page = (Graphics2D) g;
        //page = this.page;
+      sky.draw(page);
+      building1.draw(page);
+      building2.draw(page);
+      window1.draw(page);
       ground.draw(page);
-      figure1.draw (page);
-      figure2.draw (page);
-      figure3.draw (page);
-      figure4.draw (page);
+      
       //ground.draw(page);
 
       //Thread t1 = new Thread(ground);

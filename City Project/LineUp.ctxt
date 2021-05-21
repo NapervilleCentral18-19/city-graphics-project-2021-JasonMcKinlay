@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=LineUp
+comment1.params=
+comment1.target=LineUp()
+comment2.params=
+comment2.target=void\ startThreads()
+comment3.params=g
+comment3.target=void\ paintComponent(java.awt.Graphics)
+comment4.params=
+comment4.target=void\ nextFrame()
+comment5.params=
+comment5.target=void\ run()
+numComments=6

@@ -10,20 +10,22 @@ import java.awt.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Floor extends JComponent implements Runnable
+public class Windows extends JComponent implements Runnable
 {
     // instance variables - replace the example below with your own
     private int x,y,w,h;
+    private Color color;
 
     /**
      * Constructor for objects of class Floor
      */
-    public Floor()
+    public Windows()
     {
-        x = 50;
-        y = 125;
-        w = 250;
-        h = 50;
+        x = 0;
+        y = 0;
+        w = 5;
+        h = 5;
+        color = Color.white;
     }
 
     @Override
@@ -43,16 +45,16 @@ public class Floor extends JComponent implements Runnable
      *      they are next drawn.
      *
      */
-    public void setX(int running)
+    public void flash(int running)
     {
         // update the objects in the cityscape so they are animated
         // ...
         //height = 100 +generator.nextInt(45);
         
         if (running % 2 == 0)
-            x +=20;
+            color = Color.white;
         else
-            x -= 20;
+            color = Color.black;
         
         
         
@@ -66,7 +68,7 @@ public class Floor extends JComponent implements Runnable
        //-----------------------------------------------------------------
        public void draw (Graphics2D page)
        {
-          page.setColor(Color.black);
+          page.setColor(color);
           page.fillRect(x, y, w, h);
        }
        
@@ -76,9 +78,9 @@ public class Floor extends JComponent implements Runnable
     while(true){
         
         if(running % 2 == 0)
-            x +=20;
+            color = Color.white;
         else
-            x -= 20;
+            color = Color.black;
         running ++;
             try{
             Thread.sleep(250); //1000 is a second

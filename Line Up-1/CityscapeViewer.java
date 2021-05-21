@@ -45,11 +45,14 @@ public class CityscapeViewer
         //  component.
         frame.setVisible(true);
         
+        row.startThreads();
+        
         // animate the cityscape
         for( int seconds = 0; seconds < ANIMATION_TIME_IN_SECONDS; seconds++ )
         {
-            row.nextFrame();
-            Thread.sleep( 100 );
+            //update the "graphic page"
+            row.repaint();
+            Thread.sleep( 100 ); //MAY HAVE TO ADJUST FOR SMOOTH ANIMATION
         }
         
     }

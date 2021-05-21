@@ -13,6 +13,7 @@
 
 public class StickFigure extends JComponent
     {
+       //0, 0 is upper left
        private int baseX;     // center of figure
        private int baseY;     // floor (bottom of feet)
        private Color color;   // color of stick figure
@@ -55,6 +56,8 @@ public class StickFigure extends JComponent
         // invoke the draw method
         // ...
         draw(g2);
+        
+        //drawwindows(x,y);
 
 
     }
@@ -88,8 +91,11 @@ public class StickFigure extends JComponent
           page.setColor (color);
           //                 x     y    h  w
           // head
+          page.drawOval(baseX - 10, top, 20, 20);
+          //fillOval will give you a solid shape
 
           // trunk
+          page.drawLine(baseX, top + 20, baseX, baseY - 30);
                                     //remember, increase y actually moves closer to bottom
 
           page.drawLine (baseX, baseY-30, baseX-15, baseY);  // legs
