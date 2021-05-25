@@ -27,6 +27,29 @@ public class Rectangle extends JComponent implements Runnable
         h = myH;
         color = myColor;
     }
+    
+    /**
+     * Getters so that the window class can know the location/scale of the building
+     */
+    public int getX()
+    {
+        return x;
+    }
+    
+    public int getY()
+    {
+        return y;
+    }
+    
+    public int getW()
+    {
+        return w;
+    }
+    
+    public int getH()
+    {
+        return h;
+    }
 
     @Override
     public void paintComponent(Graphics g)

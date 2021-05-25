@@ -25,7 +25,7 @@ public class LineUp extends JComponent //implements Runnable
    private Rectangle building1 = new Rectangle(0,200,100,400, Color.black);
    private Rectangle building2 = new Rectangle(100,150,100,400, Color.darkGray);
    
-   private Windows window1 = new Windows();
+   private Windows window1 = new Windows(building1);
    //private StickFigure figure1,figure2, figure3, figure4;
    //private Floor ground;
    //private int running = 0;
@@ -92,7 +92,16 @@ public class LineUp extends JComponent //implements Runnable
       sky.draw(page);
       building1.draw(page);
       building2.draw(page);
+      
+      //Rectangle[][] grid1 = window1.getGrid(); 
+      /*for (Rectangle[] row : grid1) {
+            for (Rectangle col : row) {
+                window1.draw(page);
+                }
+            }
+      */    
       window1.draw(page);
+      
       ground.draw(page);
       
       //ground.draw(page);

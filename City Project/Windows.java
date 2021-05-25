@@ -13,19 +13,54 @@ import java.awt.*;
 public class Windows extends JComponent implements Runnable
 {
     // instance variables - replace the example below with your own
-    private int x,y,w,h;
+    private int rows, cols;
+    //private int x,y,w,h;
     private Color color;
+    private Rectangle[][] grid;
+    private Rectangle building;
 
     /**
      * Constructor for objects of class Floor
      */
-    public Windows()
+    public Windows(Rectangle build)
     {
+        building = build;
+        color = Color.white;
+        rows = building.getH() / 20;
+        cols = building.getW() / 20;
+        grid = new Rectangle[rows-2][cols-2];
+        
+        int x = building.getX() + 10;
+        int y = building.getY() + 10;
+        for (Rectangle[] row : grid) {
+            for (Rectangle col : row) {
+                col = new Rectangle(x, y, 20, 20, Color.white);
+                x += 40;
+            }
+            y += 40;
+            x = building.getX();
+        }
+        /*
         x = 0;
         y = 0;
-        w = 5;
-        h = 5;
-        color = Color.white;
+        w = 25;
+        h = 25;
+        */
+    }
+    
+    public int getRows()
+    {
+        return rows;
+    }
+    
+    public int getCols()
+    {
+        return cols;
+    }
+    
+    public Rectangle[][] getGrid()
+    {
+        return grid;
     }
 
     @Override
@@ -68,25 +103,46 @@ public class Windows extends JComponent implements Runnable
        //-----------------------------------------------------------------
        public void draw (Graphics2D page)
        {
+          /*for (Rectangle[] row : grid) {
+            for (Rectangle col : row) {
+                page.setColor(color);
+                page.fillRect(col.getX(), col.getY(), col.getW(), col.getH());
+                }
+            }
+          */
+          /*int row = 0;
+          int col = 0;
+          if (row == grid.length-1 || col == grid.length-1) {
+              return; }
+          else {
+              page.setColor(color);
+              page.fillRect(grid[row][col].getX(), grid[row][col].getY(), 25, 25);
+              if (col == grid.length-1) {
+                  row++;
+                  col = 0;
+              }
+              else {
+                  col++;
+              }
+          }*/
           page.setColor(color);
-          page.fillRect(x, y, w, h);
+          page.fillRect(building.getX(), building.getY(), 20, 20);
        }
+       
+       //public void drawGrid(Graphics2D page)
        
     public void run()
     {
         int running  = 0;
     while(true){
         
-        if(running % 2 == 0)
-            color = Color.white;
-        else
-            color = Color.black;
+        flash(running);
         running ++;
             try{
-            Thread.sleep(250); //1000 is a second
+            Thread.sleep(500); //1000 is a second
         }catch (Exception e){}
         
-        System.out.print(x+"-----------------");
+        //System.out.print(x+"-----------------");
         //repaint();
     }
   
