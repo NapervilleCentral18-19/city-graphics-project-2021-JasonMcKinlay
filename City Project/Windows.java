@@ -40,6 +40,8 @@ public class Windows extends JComponent implements Runnable
             y += 40;
             x = building.getX();
         }
+        
+        //System.out.println(rows + "----" + cols);
         /*
         x = 0;
         y = 0;
@@ -103,13 +105,18 @@ public class Windows extends JComponent implements Runnable
        //-----------------------------------------------------------------
        public void draw (Graphics2D page)
        {
-          /*for (Rectangle[] row : grid) {
-            for (Rectangle col : row) {
+          int rowIncrement = 0;
+          int colIncrement = 0;
+           for (int j = 0; j < grid[0].length; j++) { //Rectangle[] row : grid
+            for (int i = 0; i < grid.length; i++) {
                 page.setColor(color);
-                page.fillRect(col.getX(), col.getY(), col.getW(), col.getH());
+                page.fillRect(building.getX()+10+rowIncrement, building.getY()+10+colIncrement, 15, 15);
+                colIncrement += 30;
                 }
+            colIncrement = 0;
+            rowIncrement += 30;
             }
-          */
+          
           /*int row = 0;
           int col = 0;
           if (row == grid.length-1 || col == grid.length-1) {
@@ -125,8 +132,10 @@ public class Windows extends JComponent implements Runnable
                   col++;
               }
           }*/
-          page.setColor(color);
-          page.fillRect(building.getX(), building.getY(), 20, 20);
+          //page.setColor(color);
+          //page.fillRect(building.getX()+10, building.getY()+10, 20, 20);
+          //page.fillRect(building.getX()+40, building.getY()+40, 20, 20);
+          
        }
        
        //public void drawGrid(Graphics2D page)
