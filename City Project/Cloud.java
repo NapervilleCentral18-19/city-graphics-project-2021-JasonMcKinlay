@@ -10,51 +10,20 @@ import java.awt.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Rectangle extends JComponent implements Runnable
+public class Cloud extends JComponent implements Runnable
 {
     // instance variables - replace the example below with your own
-    private int x,y,w,h;
+    private int x,y;
     private Color color;
 
     /**
      * Constructor for objects of class Floor
      */
-    public Rectangle(int myX, int myY, int myW, int myH, Color myColor)
+    public Cloud(int myX, int myY)
     {
         x = myX;
         y = myY;
-        w = myW;
-        h = myH;
-        color = myColor;
-    }
-    
-    /**
-     * Getters so that the window class can know the location/scale of the building
-     */
-    public int getX()
-    {
-        return x;
-    }
-    
-    public int getY()
-    {
-        return y;
-    }
-    
-    public int getW()
-    {
-        return w;
-    }
-    
-    public int getH()
-    {
-        return h;
-    }
-    
-    public void setColor(Color myColor)
-    {
-        color = myColor;
-        repaint();
+        color = Color.white;
     }
     
     public Color getColor()
@@ -81,7 +50,17 @@ public class Rectangle extends JComponent implements Runnable
        public void draw (Graphics2D page)
        {
           page.setColor(color);
-          page.fillRect(x, y, w, h);
+          page.fillOval(x, y, 40, 20);
+          page.fillOval(x+10, y-10, 20, 20);
+       }
+       
+       public void move ()
+       {
+           if (x == 800)
+               x = 0;
+           else
+               x += 5;
+           repaint();
        }
        
     public void run()

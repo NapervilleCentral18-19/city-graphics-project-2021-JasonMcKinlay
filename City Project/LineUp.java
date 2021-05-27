@@ -19,13 +19,25 @@ public class LineUp extends JComponent //implements Runnable
    private final int VARIANCE = 45;
    Random generator = new Random();
    //Graphics page;
-
-   private Rectangle ground = new Rectangle(0,500,1000,800, Color.green);
-   private Rectangle sky = new Rectangle(0,0,1920,1080, Color.cyan);
-   private Rectangle building1 = new Rectangle(0,200,100,400, Color.black);
+   
+   private Color groundColor = new Color(75, 231, 75);
+   private Rectangle ground = new Rectangle(0,500,1000,800, groundColor);
+   private Color skyColor = new Color(173, 231, 255);
+   private Rectangle sky = new Rectangle(0,0,1920,1080, skyColor);
+   private Color lakeColor = new Color(88, 105, 238);
+   private Rectangle lake = new Rectangle(200,500,400,800, lakeColor);
+   private Cloud cloud = new Cloud(200,100);
+   
+   private Color buildingColor2 = new Color(46,46,46);
+   private Rectangle building1 = new Rectangle(0,200,100,400, buildingColor2);
    private Rectangle building2 = new Rectangle(100,150,100,400, Color.darkGray);
+   private Rectangle building3 = new Rectangle(700,250,100,400, buildingColor2);
+   private Rectangle building4 = new Rectangle(600,200,100,400, Color.darkGray);
    
    private Windows window1 = new Windows(building1);
+   private Windows window2 = new Windows(building2);
+   private Windows window3 = new Windows(building3);
+   private Windows window4 = new Windows(building4);
    //private StickFigure figure1,figure2, figure3, figure4;
    //private Floor ground;
    //private int running = 0;
@@ -72,14 +84,32 @@ public class LineUp extends JComponent //implements Runnable
        Thread groundThread = new Thread(ground);
        Thread bThread1 = new Thread(building1);
        Thread bThread2 = new Thread(building2);
+       Thread bThread3 = new Thread(building3);
+       Thread bThread4 = new Thread(building4);
+       
+       Thread lakeThread = new Thread(lake);
        Thread skyThread = new Thread(sky);
+       Thread cloudThread = new Thread(cloud);
+       
        Thread windowThread1 = new Thread(window1);
-
+       Thread windowThread2 = new Thread(window2);
+       Thread windowThread3 = new Thread(window3);
+       Thread windowThread4 = new Thread(window4);
+       
        groundThread.start();
        bThread1.start();
        bThread2.start();
+       bThread3.start();
+       bThread4.start();
+       
+       lakeThread.start();
        skyThread.start();
+       cloudThread.start();
+       
        windowThread1.start();
+       windowThread2.start();
+       windowThread3.start();
+       windowThread4.start();
    }
 
    //-----------------------------------------------------------------
@@ -90,8 +120,11 @@ public class LineUp extends JComponent //implements Runnable
         Graphics2D page = (Graphics2D) g;
        //page = this.page;
       sky.draw(page);
+      cloud.draw(page);
       building1.draw(page);
       building2.draw(page);
+      building3.draw(page);
+      building4.draw(page);
       
       //Rectangle[][] grid1 = window1.getGrid(); 
       /*for (Rectangle[] row : grid1) {
@@ -101,8 +134,12 @@ public class LineUp extends JComponent //implements Runnable
             }
       */    
       window1.draw(page);
+      window2.draw(page);
+      window3.draw(page);
+      window4.draw(page);
       
       ground.draw(page);
+      lake.draw(page);
       
       //ground.draw(page);
 
@@ -130,16 +167,21 @@ public class LineUp extends JComponent //implements Runnable
       //repaint(); //IMPORTANT LINE
    }
 
-   public void nextFrame()
+   public void nextFrame(int running)
    {
        //figure1.setHeight(HEIGHT_MIN + generator.nextInt(VARIANCE));
        //figure2.setHeight(HEIGHT_MIN + generator.nextInt(VARIANCE));
        //figure3.setHeight(HEIGHT_MIN + generator.nextInt(VARIANCE));
        //figure4.setHeight(HEIGHT_MIN + generator.nextInt(VARIANCE));
-       //running ++;
+       running ++;
        //ground.setX(running);
        //Thread t1 = new Thread(ground);
        //t1.start();
+       window1.flash(running);
+       window2.flash(running);
+       window3.flash(running);
+       window4.flash(running);
+       cloud.move();
 
        repaint();
 

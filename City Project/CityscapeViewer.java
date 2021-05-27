@@ -48,7 +48,7 @@ public class CityscapeViewer
         // animate the cityscape
         for( int seconds = 0; seconds < ANIMATION_TIME_IN_SECONDS; seconds++ )
         {
-            row.nextFrame();
+            row.nextFrame(seconds);
             Thread.sleep( 100 );
         }
         

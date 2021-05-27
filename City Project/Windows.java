@@ -15,7 +15,7 @@ public class Windows extends JComponent implements Runnable
     // instance variables - replace the example below with your own
     private int rows, cols;
     //private int x,y,w,h;
-    private Color color;
+    private Color light, dark;
     private Rectangle[][] grid;
     private Rectangle building;
 
@@ -25,29 +25,22 @@ public class Windows extends JComponent implements Runnable
     public Windows(Rectangle build)
     {
         building = build;
-        color = Color.white;
+        light = new Color(255, 252, 195);
         rows = building.getH() / 20;
         cols = building.getW() / 20;
-        grid = new Rectangle[rows-2][cols-2];
+        grid = new Rectangle[rows-9][cols-2];
         
         int x = building.getX() + 10;
         int y = building.getY() + 10;
-        for (Rectangle[] row : grid) {
-            for (Rectangle col : row) {
-                col = new Rectangle(x, y, 20, 20, Color.white);
-                x += 40;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                grid[i][j] = new Rectangle(x, y, 20, 20, light);
+                x += 30;
             }
-            y += 40;
-            x = building.getX();
+            y += 30;
+            x = building.getX() + 10;
         }
-        
-        //System.out.println(rows + "----" + cols);
-        /*
-        x = 0;
-        y = 0;
-        w = 25;
-        h = 25;
-        */
+    
     }
     
     public int getRows()
@@ -87,17 +80,30 @@ public class Windows extends JComponent implements Runnable
         // update the objects in the cityscape so they are animated
         // ...
         //height = 100 +generator.nextInt(45);
+        Random generator = new Random();
+        int randRow, randCol;
         
-        if (running % 2 == 0)
-            color = Color.white;
-        else
-            color = Color.black;
-        
+        for (int i = 0; i < 10; i++) {
+            randRow = generator.nextInt(grid.length);
+            randCol = generator.nextInt(grid[0].length);
+            
+            if (running % 2 == 0)
+            {
+                //color = Color.yellow;
+                grid[randRow][randCol].setColor(light);
+            }
+            else
+            {
+                //color = Color.black;
+                grid[randRow][randCol].setColor(Color.black);
+            } 
+            repaint();
+        }
         
         
         // request that the Java Runtime repaints this component by invoking its paintComponent method
         //  do not explicitly invoke the paintComponent method
-        repaint();
+        //repaint();
     }
     
        //-----------------------------------------------------------------
@@ -109,8 +115,8 @@ public class Windows extends JComponent implements Runnable
           int colIncrement = 0;
            for (int j = 0; j < grid[0].length; j++) { //Rectangle[] row : grid
             for (int i = 0; i < grid.length; i++) {
-                page.setColor(color);
-                page.fillRect(building.getX()+10+rowIncrement, building.getY()+10+colIncrement, 15, 15);
+                page.setColor(grid[i][j].getColor());
+                page.fillRect(grid[i][j].getX(), grid[i][j].getY(), 15, 15);
                 colIncrement += 30;
                 }
             colIncrement = 0;
@@ -148,7 +154,7 @@ public class Windows extends JComponent implements Runnable
         flash(running);
         running ++;
             try{
-            Thread.sleep(500); //1000 is a second
+            Thread.sleep(1); //1000 is a second
         }catch (Exception e){}
         
         //System.out.print(x+"-----------------");
