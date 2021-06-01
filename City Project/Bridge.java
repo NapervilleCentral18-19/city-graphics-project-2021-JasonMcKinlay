@@ -10,25 +10,17 @@ import java.awt.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Cloud extends JComponent implements Runnable
+public class Bridge extends JComponent implements Runnable
 {
     // instance variables - replace the example below with your own
-    private int x,y;
     private Color color;
 
     /**
-     * Constructor for objects of class Floor
+     * Constructor for objects of class Bridge
      */
-    public Cloud(int myX, int myY)
+    public Bridge()
     {
-        x = myX;
-        y = myY;
-        color = Color.white;
-    }
-    
-    public Color getColor()
-    {
-        return color;
+        color = new Color(46,46,46);
     }
 
     @Override
@@ -50,17 +42,10 @@ public class Cloud extends JComponent implements Runnable
        public void draw (Graphics2D page)
        {
           page.setColor(color);
-          page.fillOval(x, y, 40, 20);
-          page.fillOval(x+10, y-10, 20, 20);
-       }
-       
-       public void move ()
-       {
-           if (x >= 800)
-               x = -30;
-           else
-               x += 5;
-           repaint();
+          page.fillRect(0, 515, 200,10);
+          page.fillRect(600, 515, 200,10);
+          page.fillRect(300, 475, 200,10);
+          page.rotate(30.0);
        }
        
     public void run()
@@ -68,16 +53,11 @@ public class Cloud extends JComponent implements Runnable
         int running  = 0;
     while(true){
         
-        if(running % 2 == 0)
-            x +=20;
-        else
-            x -= 20;
-        running ++;
             try{
             Thread.sleep(250); //1000 is a second
         }catch (Exception e){}
         
-        System.out.print(x+"-----------------");
+        //System.out.print(x+"-----------------");
         //repaint();
     }
   

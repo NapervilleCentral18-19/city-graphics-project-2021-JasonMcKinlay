@@ -10,26 +10,32 @@ import java.awt.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Cloud extends JComponent implements Runnable
+public class Sun extends JComponent implements Runnable
 {
     // instance variables - replace the example below with your own
     private int x,y;
     private Color color;
 
     /**
-     * Constructor for objects of class Floor
+     * Constructor for objects of class Sun
      */
-    public Cloud(int myX, int myY)
+    public Sun()
     {
-        x = myX;
-        y = myY;
-        color = Color.white;
+        x = -25;
+        y = -10;
+        color = new Color(255,231,71);
     }
     
-    public Color getColor()
+    
+    public void move()
     {
-        return color;
+        if (x == 800)
+               x = -100;
+           else
+               x += 1;
+        repaint();
     }
+    
 
     @Override
     public void paintComponent(Graphics g)
@@ -50,17 +56,7 @@ public class Cloud extends JComponent implements Runnable
        public void draw (Graphics2D page)
        {
           page.setColor(color);
-          page.fillOval(x, y, 40, 20);
-          page.fillOval(x+10, y-10, 20, 20);
-       }
-       
-       public void move ()
-       {
-           if (x >= 800)
-               x = -30;
-           else
-               x += 5;
-           repaint();
+          page.fillOval(x, y, 100, 100);
        }
        
     public void run()

@@ -17,7 +17,7 @@ public class Rectangle extends JComponent implements Runnable
     private Color color;
 
     /**
-     * Constructor for objects of class Floor
+     * Constructor for objects of class Rectangle
      */
     public Rectangle(int myX, int myY, int myW, int myH, Color myColor)
     {

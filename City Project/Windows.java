@@ -20,12 +20,13 @@ public class Windows extends JComponent implements Runnable
     private Rectangle building;
 
     /**
-     * Constructor for objects of class Floor
+     * Constructor for objects of class Windows
      */
-    public Windows(Rectangle build)
+    public Windows(Rectangle build, Color brightness, Color darkness)
     {
         building = build;
-        light = new Color(255, 252, 195);
+        light = brightness;
+        dark = darkness;
         rows = building.getH() / 20;
         cols = building.getW() / 20;
         grid = new Rectangle[rows-9][cols-2];
@@ -95,7 +96,7 @@ public class Windows extends JComponent implements Runnable
             else
             {
                 //color = Color.black;
-                grid[randRow][randCol].setColor(Color.black);
+                grid[randRow][randCol].setColor(dark);
             } 
             repaint();
         }
