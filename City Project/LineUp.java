@@ -30,6 +30,15 @@ public class LineUp extends JComponent //implements Runnable
    private Cloud[] clouds = new Cloud[10];
    private Sun sun = new Sun();
    private Bridge bridge = new Bridge();
+   private Car car1 = new Car(Color.red, 50);
+   private Car car2 = new Car(Color.lightGray, 380);
+   
+   private Tree tree1 = new Tree(150, 515);
+   private Tree tree2 = new Tree(50, 475);
+   private Tree tree3 = new Tree(670, 515);
+   private Tree tree4 = new Tree(750, 475);
+   private Tree tree5 = new Tree(610, 465);
+   private Tree tree6 = new Tree(10, 530);
    
    private Color buildingColor2 = new Color(46,46,46);
    private Color buildingColorBG = new Color(110,120,129);
@@ -210,7 +219,18 @@ public class LineUp extends JComponent //implements Runnable
       
       ground.draw(page);
       lake.draw(page);
-      //bridge.draw(page);
+      
+      tree2.draw(page);
+      tree4.draw(page);
+      tree5.draw(page);
+      
+      car1.draw(page);
+      car2.draw(page);
+      bridge.draw(page);
+      
+      tree1.draw(page);
+      tree3.draw(page);
+      tree6.draw(page);
       
       //ground.draw(page);
 
@@ -264,6 +284,8 @@ public class LineUp extends JComponent //implements Runnable
            cloud.move();
        }
        sun.move();
+       car1.move();
+       car2.move();
 
        repaint();
 

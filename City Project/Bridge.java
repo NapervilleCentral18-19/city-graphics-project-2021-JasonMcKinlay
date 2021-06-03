@@ -42,10 +42,34 @@ public class Bridge extends JComponent implements Runnable
        public void draw (Graphics2D page)
        {
           page.setColor(color);
+          page.setStroke(new BasicStroke(10));
+          page.drawLine(0,515,800,515);
+          page.drawOval(200,450,400,150);
+          
+          page.setStroke(new BasicStroke(5));
+          page.drawLine(300, 460, 300, 800);
+          page.drawLine(500, 460, 500, 800);
+          page.drawLine(250, 480, 250, 800);
+          page.drawLine(550, 480, 550, 800);
+          page.drawLine(350, 460, 350, 800);
+          page.drawLine(450, 460, 450, 800);
+          page.drawLine(400, 450, 400, 800);
+          
+          page.setColor(new Color(75, 231, 75));
+          page.fillRect(0,520,800,800);
+          
+          page.setColor(new Color(88, 105, 238));
+          page.fillRect(200,520,400,800);
+          
+          
+          /*
           page.fillRect(0, 515, 200,10);
           page.fillRect(600, 515, 200,10);
           page.fillRect(300, 475, 200,10);
-          page.rotate(30.0);
+          page.setStroke(new BasicStroke(10));
+          page.drawLine(200, 520, 300, 480);
+          page.drawLine(600, 520, 500, 480);
+          */
        }
        
     public void run()
